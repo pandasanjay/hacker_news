@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should render app and check snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <div>
+      My story
+    </div>
+  </div>
+</DocumentFragment>
+`;
