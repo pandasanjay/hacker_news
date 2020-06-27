@@ -1,0 +1,11 @@
+{
+  "name": "hacker_news",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sanjay Panda <panda.sanjay18@gmail.com>",
+  "license": "ISC"
+}
