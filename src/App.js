@@ -1,23 +1,21 @@
 import React from 'react'
-import { Switch, Route } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import { renderRoutes } from 'react-router-config'
 import './styles/style.scss'
-import Story from './containers/Story'
-import NoMatch from './containers/NoMatch'
-const App = () => {
+import ErrorBoundary from './components/ErrorBoundary'
+
+export const App = ({ route }) => {
     return (
         <>
             <div>
-                <Switch>
-                    <Route exact path="/">
-                        <Story />
-                    </Route>
-                    <Route path="*">
-                        <NoMatch />
-                    </Route>
-                </Switch>
+                <ErrorBoundary>{renderRoutes(route.routes)}</ErrorBoundary>
             </div>
         </>
     )
 }
-
-export default App
+App.propTypes = {
+    route: PropTypes.object,
+}
+export default {
+    component: App,
+}

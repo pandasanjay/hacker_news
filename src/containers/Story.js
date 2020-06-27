@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import PropTypes from 'prop-types'
+import PropsType from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import actions from '../store/combine-actions'
@@ -15,10 +15,17 @@ const Story = (props) => {
     useEffect(() => {
         props.setAppState({ name: 'Helloo' })
     }, [])
-    return <div>My story</div>
-}
-Story.propTypes = {
-    setAppState: PropTypes.func,
+    return <div>{props.state.appState.name}</div>
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Story)
+Story.propTypes = {
+    setAppState: PropsType.func,
+    state: PropsType.object,
+}
+const loadData = (store) => {
+    return store.dispatch(actions.setAppState({ name: 'from server' }))
+}
+export default {
+    component: connect(mapStateToProps, mapDispatchToProps)(Story),
+    loadData,
+}
