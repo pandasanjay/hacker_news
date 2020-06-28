@@ -9,8 +9,7 @@
     },
     "scripts": {
         "build:prod": "NODE_ENV=production rm -rf dist && webpack",
-        "start": "webpack-dev-server",
-        "dev": "rm -rf dist && webpack && npm-run-all --parallel dev:*",
+        "start": "rm -rf dist && webpack && npm-run-all --parallel dev:*",
         "dev:build": "webpack --watch",
         "dev:server": "nodemon --watch dist --exec \"node dist/index.js\"",
         "test": "jest --config jest.config.js",

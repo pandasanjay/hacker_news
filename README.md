@@ -8,7 +8,7 @@
 
 ## Run Application:
 
-This application use webpack 
+This application use webpack
 
 ```bash
 // Install
@@ -16,6 +16,9 @@ yarn install
 
 // Start
 yarn start
+
+//Production Build
+yarn build:prod
 ```
 
 Open in browser: http://localhost:3000
