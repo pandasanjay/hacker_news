@@ -1,3 +1,5 @@
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
 const babelLoader = {
     test: /\.m?js$/,
     exclude: /(node_modules)/,
@@ -10,7 +12,12 @@ const babelLoader = {
 const cssLoader = {
     test: /\.s[ac]ss$/i,
     use: [
-        'style-loader',
+        {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+                esModule: true,
+            },
+        },
         'css-loader',
         {
             loader: 'sass-loader',
@@ -22,4 +29,15 @@ const cssLoader = {
     ],
 }
 
-module.exports = [babelLoader, cssLoader]
+const cssLoaderIgnore = {
+    test: /\.s[ac]ss$/i,
+    loader: 'ignore-loader',
+}
+
+module.exports = (configType = 'client') => {
+    if (configType === 'client') {
+        return [babelLoader, cssLoader]
+    } else {
+        return [babelLoader, cssLoaderIgnore]
+    }
+}

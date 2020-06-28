@@ -4,7 +4,7 @@ exports[`App should render app and check snapshot 1`] = `
 <DocumentFragment>
   <div>
     <div>
-      My story
+      Loading...
     </div>
   </div>
 </DocumentFragment>

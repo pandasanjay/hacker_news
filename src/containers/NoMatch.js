@@ -1,15 +1,14 @@
 import React from 'react'
-
-import { useLocation } from 'react-router-dom'
-const NoMatch = () => {
-    let location = useLocation()
-
+import PropTypes from 'prop-types'
+const NoMatch = ({ staticContext = {} }) => {
+    staticContext.notFound = true
     return (
         <div>
-            <h3>
-                No match for <code>{location.pathname}</code>
-            </h3>
+            <h3>No match!!</h3>
         </div>
     )
+}
+NoMatch.propTypes = {
+    staticContext: PropTypes.object,
 }
 export default NoMatch

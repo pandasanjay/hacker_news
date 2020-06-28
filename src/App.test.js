@@ -3,9 +3,9 @@ import { render } from '@testing-library/react'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router } from 'react-router-dom'
 import configureStore from 'redux-mock-store'
-
-const mockStore = configureStore([])
 import App from './App'
+import Routers from './Routes'
+const mockStore = configureStore([])
 describe('App', () => {
     let store
 
@@ -20,7 +20,7 @@ describe('App', () => {
         const { asFragment } = render(
             <Provider store={store}>
                 <Router>
-                    <App />
+                    <App route={Routers[0]} />
                 </Router>
             </Provider>
         )

@@ -1,6 +1,8 @@
 module.exports = (api) => {
     api.cache(true)
     const plugins = [
+        '@babel/plugin-syntax-dynamic-import',
+        '@loadable/babel-plugin',
         [
             '@babel/plugin-transform-runtime',
             {
@@ -8,7 +10,16 @@ module.exports = (api) => {
             },
         ],
     ]
-    const presets = ['@babel/preset-env', '@babel/preset-react']
+    const presets = [
+        [
+            '@babel/preset-env',
+            {
+                corejs: 3,
+                useBuiltIns: 'usage',
+            },
+        ],
+        '@babel/preset-react',
+    ]
     return {
         plugins,
         presets,
