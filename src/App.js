@@ -4,7 +4,7 @@ import { renderRoutes } from 'react-router-config'
 import './styles/style.scss'
 import ErrorBoundary from './components/ErrorBoundary'
 
-export const App = ({ route }) => {
+const App = ({ route }) => {
     return (
         <>
             <div>
@@ -16,6 +16,4 @@ export const App = ({ route }) => {
 App.propTypes = {
     route: PropTypes.object,
 }
-export default {
-    component: App,
-}
+export default App

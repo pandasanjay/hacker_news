@@ -11,6 +11,4 @@ const NoMatch = ({ staticContext = {} }) => {
 NoMatch.propTypes = {
     staticContext: PropTypes.object,
 }
-export default {
-    component: NoMatch,
-}
+export default NoMatch

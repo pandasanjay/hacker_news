@@ -1,6 +1,6 @@
 # Add SSR to project.
 
-> **Story Point**: 5 | **Time spent**: 4hr | **Status**: Completed
+> **Story Point**: 5 | **Time spent**: 5hr | **Status**: Completed
 
 Add ssr support to project.
 

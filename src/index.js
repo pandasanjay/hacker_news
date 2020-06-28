@@ -1,5 +1,6 @@
 import React from 'react'
-import ReactDom from 'react-dom'
+import { hydrate } from 'react-dom'
+import { loadableReady } from '@loadable/component'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { renderRoutes } from 'react-router-config'
 import { Provider } from 'react-redux'
@@ -8,11 +9,11 @@ import Routes from './Routes'
 const state = window.__SERVER_STATE__
 delete window.__SERVER_STATE__
 const store = createStore(state)
-ReactDom.hydrate(
-    <Provider store={store}>
-        <Router>
-            <div>{renderRoutes(Routes)}</div>
-        </Router>
-    </Provider>,
-    document.getElementById('app')
-)
+loadableReady(() => {
+    hydrate(
+        <Provider store={store}>
+            <Router>{renderRoutes(Routes)}</Router>
+        </Provider>,
+        document.getElementById('app')
+    )
+})

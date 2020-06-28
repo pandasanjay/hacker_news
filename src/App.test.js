@@ -3,7 +3,7 @@ import { render } from '@testing-library/react'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router } from 'react-router-dom'
 import configureStore from 'redux-mock-store'
-import { App } from './App'
+import App from './App'
 import Routers from './Routes'
 const mockStore = configureStore([])
 describe('App', () => {

@@ -5,8 +5,10 @@ import renderer from './renderer'
 import Routes from '../Routes'
 /* eslint-disable  no-undef */
 const PORT = process.env.PORT || 3000
+
 const app = express()
 app.use(express.static('dist/public'))
+
 app.get('*', (req, res) => {
     const routes = matchRoutes(Routes, req.path)
 

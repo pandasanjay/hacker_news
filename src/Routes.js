@@ -1,17 +1,25 @@
+import React from 'react'
+import loadable from '@loadable/component'
 import App from './App'
-import Story from './containers/Story'
-import NoMatch from './containers/NoMatch'
+import { loadData } from './containers/Story'
+const Story = loadable(() => import('./containers/Story'), {
+    fallback: <div>Loading...</div>,
+})
+const NoMatch = loadable(() => import('./containers/NoMatch'), {
+    fallback: <div>Loading...</div>,
+})
 export default [
     {
-        ...App,
+        component: App,
         routes: [
             {
-                ...Story,
+                component: Story,
+                loadData,
                 path: '/',
                 exact: true,
             },
             {
-                ...NoMatch,
+                component: NoMatch,
             },
         ],
     },

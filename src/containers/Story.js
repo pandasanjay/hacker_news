@@ -13,19 +13,17 @@ const mapDispatchToProps = (dispatch) => ({
 
 const Story = (props) => {
     useEffect(() => {
-        props.setAppState({ name: 'Helloo' })
+        //props.setAppState({ name: 'From server' })
     }, [])
-    return <div>{props.state.appState.name}</div>
+    return <>{props.state.appState.name}</>
 }
 
 Story.propTypes = {
     setAppState: PropsType.func,
     state: PropsType.object,
 }
-const loadData = (store) => {
-    return store.dispatch(actions.setAppState({ name: 'from server' }))
+export const loadData = (store) => {
+    return store.dispatch(actions.setAppState({ name: 'From server' }))
 }
-export default {
-    component: connect(mapStateToProps, mapDispatchToProps)(Story),
-    loadData,
-}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Story)
