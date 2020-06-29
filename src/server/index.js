@@ -19,7 +19,7 @@ app.use(
     graphqlHTTP({
         schema: schema,
         rootValue: root,
-        graphiql: true,
+        graphiql: process.env.NODE_ENV !== 'production',
     })
 )
 app.use(express.static('dist/public'))

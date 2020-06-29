@@ -8,10 +8,10 @@
         "url": "https://github.com/pandasanjay/hacker_news"
     },
     "scripts": {
-        "start": "node ./dist/index.js",
+        "start": "NODE_ENV=production node ./dist/index.js",
         "heroku-postbuild": "npm run build:prod",
         "heroku-prebuild": "rm -rf dist",
-        "build:prod": "NODE_ENV=production webpack",
+        "build:prod": "env-cmd webpack",
         "dev": "rm -rf dist && webpack && npm-run-all --parallel dev:*",
         "dev:build": "webpack --watch",
         "dev:server": "nodemon --watch dist --exec \"node dist/index.js\"",
@@ -59,6 +59,7 @@
         "babel-loader": "^8.1.0",
         "copy-webpack-plugin": "^6.0.2",
         "css-loader": "^3.6.0",
+        "env-cmd": "^10.1.0",
         "eslint": "^7.3.1",
         "eslint-config-prettier": "^6.11.0",
         "eslint-plugin-import": "^2.22.0",
