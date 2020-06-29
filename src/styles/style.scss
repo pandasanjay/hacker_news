@@ -3,12 +3,11 @@
 body {
     font-family: Verdana, Geneva, sans-serif;
     font-size: 10pt;
-    color: $color;
 
     .container {
         max-width: 1264px;
         width: 100%;
-        background: #bfbfba;
+        background: $secondary-1;
         margin: 0 auto;
         padding: 20px;
         /* 
@@ -22,7 +21,7 @@ body {
     }
     .hn_page_navigation {
         text-align: end;
-        color: #c64f00;
+        color: $primary;
         font-weight: 700;
         padding: 10px;
         a {
@@ -31,7 +30,7 @@ body {
         }
     }
     .hn_separator {
-        border: 2px solid #c64f00;
+        border: 2px solid $primary;
         margin-bottom: 10px;
         margin-top: 10px;
     }

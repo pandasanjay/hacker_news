@@ -1,12 +1,13 @@
+@import '../../styles/var.scss';
 table {
     font-family: Verdana, Geneva, sans-serif;
     border-collapse: collapse;
     width: 100%;
-    color: #000;
+    color: $black-color;
 }
 td,
 th {
-    border: 0px solid #dddddd;
+    border: 0px;
     text-align: center;
     padding: 8px;
     .nb_display_mobile {
@@ -24,7 +25,9 @@ th {
     }
 }
 th {
-    background-color: #c64e03;
+    background-color: $primary;
+    color: $white-color;
+    text-align: left;
 }
 tr {
     .votearrow {

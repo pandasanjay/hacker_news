@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Line } from 'react-chartjs-2'
-
+import cssVar from '../styles/var.scss'
 const LineChart = ({ labels, data }) => {
     const chartData = {
         labels,
@@ -10,17 +10,17 @@ const LineChart = ({ labels, data }) => {
                 label: '',
                 fill: false,
                 lineTension: 0,
-                borderColor: '#104875',
+                borderColor: cssVar.chartBorder,
                 borderCapStyle: 'square',
                 borderDash: [],
                 borderDashOffset: 0.0,
                 borderJoinStyle: 'miter',
-                pointBorderColor: '#104875',
-                pointBackgroundColor: '#104875',
+                pointBorderColor: cssVar.chartBorder,
+                pointBackgroundColor: cssVar.chartBorder,
                 pointBorderWidth: 5,
                 pointHoverRadius: 5,
-                pointHoverBackgroundColor: '#104875',
-                pointHoverBorderColor: '#104875',
+                pointHoverBackgroundColor: cssVar.chartBorder,
+                pointHoverBorderColor: cssVar.chartBorder,
                 pointHoverBorderWidth: 5,
                 pointRadius: 1,
                 pointHitRadius: 0,
@@ -63,7 +63,7 @@ const LineChart = ({ labels, data }) => {
                         stepSize: Math.max(...data) / 3,
                     },
                     gridLines: {
-                        color: '#B4B3AE',
+                        color: cssVar.secondary5,
                     },
                     scaleLabel: {
                         display: true,

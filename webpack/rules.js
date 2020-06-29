@@ -1,5 +1,4 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-
 const babelLoader = {
     test: /\.m?js$/,
     exclude: /(node_modules)/,
@@ -21,10 +20,6 @@ const cssLoader = {
         'css-loader',
         {
             loader: 'sass-loader',
-            options: {
-                // Prefer `dart-sass`
-                implementation: require('sass'),
-            },
         },
     ],
 }

@@ -1,1 +1,18 @@
-$color: #828282;
+$primary: #c64f00;
+$secondary-1: #b2b3ac;
+$secondary-2: #bfbfba;
+$secondary-3: #bfbfba;
+$secondary-4: #636666;
+$secondary-5: #a5adae;
+$vote-version-50: #482d39;
+$vote-version-80: #893b06;
+$vote-version-100: #c64f00;
+$black-color: #000000;
+$white-color: #ffffff;
+$chart-border: #104875;
+
+:export {
+    primary: $primary;
+    chartBorder: $chart-border;
+    secondary5: $secondary-5
+}
