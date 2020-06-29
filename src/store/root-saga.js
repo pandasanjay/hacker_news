@@ -1,5 +1,5 @@
 import { all, takeLatest } from 'redux-saga/effects'
-import { types } from './reducers/appReducer'
+import types from './combine-types'
 import { getStoriesFromApi } from './sagas/getStorySaga'
 import { updateVote } from './sagas/upVoteSaga'
 import { hideStory } from './sagas/hideStorySaga'

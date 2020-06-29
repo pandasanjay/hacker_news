@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Line } from 'react-chartjs-2'
 
 const LineChart = ({ labels, data }) => {
@@ -79,6 +80,10 @@ const LineChart = ({ labels, data }) => {
             <Line data={chartData} height={250} options={options} />
         </div>
     )
+}
+LineChart.propTypes = {
+    labels: PropTypes.array,
+    data: PropTypes.array,
 }
 
 export default LineChart

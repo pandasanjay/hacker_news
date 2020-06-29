@@ -6,4 +6,6 @@ export const updateState = (state) => {
 
     return state
 }
-export const getStories = (state) => state.appState.stories
+export const getStories = (state) => state.story && state.story.byIds
+export const getStoriesAsArray = (state) =>
+    state.story && Object.values(state.story.byIds)

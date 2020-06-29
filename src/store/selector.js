@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
-import { getStories } from './utils'
-export const chartSelector = createSelector(getStories, (stories) =>
-    stories.hits.reduce(
+import { getStoriesAsArray } from './utils'
+export const chartSelector = createSelector(getStoriesAsArray, (stories = []) =>
+    stories.reduce(
         (init, story) => {
             if (!story.isHidden) {
                 init.labels.push(story.objectID)
@@ -14,4 +14,9 @@ export const chartSelector = createSelector(getStories, (stories) =>
             data: [],
         }
     )
+)
+
+export const getStoriesByArraySelector = createSelector(
+    getStoriesAsArray,
+    (stories) => stories
 )

@@ -6,12 +6,14 @@ import { schema, root } from './graphql/schema'
 import createStore from '../store/store'
 import renderer from './renderer'
 import Routes from '../Routes'
+import compression from 'compression'
 
 const log = debug('HN:server:index')
 /* eslint-disable  no-undef */
 const PORT = process.env.PORT || 3000
 
 const app = express()
+app.use(compression())
 app.use(
     '/graphql',
     graphqlHTTP({

@@ -1,37 +1,26 @@
-import { call, select, put } from 'redux-saga/effects'
-import actions from '../combine-actions'
-import {getStories} from "../utils"
 export function updateVoteByFromLocalStorage(state) {
-    if (state.appState) {
-        state.appState.stories.hits.forEach((story) => {
+    const stories = state.story
+    if (stories) {
+        Object.keys(stories.byIds).forEach((id) => {
             let isVoted = false
             if ('localStorage' in window) {
-                isVoted = localStorage.getItem(story.objectID)
+                isVoted = localStorage.getItem(id)
             }
             if (isVoted) {
-                incrementVote(story)
+                stories.byIds[id] = {
+                    ...stories.byIds[id],
+                    ...incrementVote(stories.byIds[id]),
+                }
             }
         })
     }
 }
-function incrementVote(story) {
-    story.isVoted = true
-    story.points += 1
-}
-function updateVoteStoryList(id, stories) {
-    const story = stories.hits.find(
-        (data) => data.objectID === id && !data.isVoted
-    )
-    if (story) {
-        incrementVote(story)
-    }
+function incrementVote(data) {
+    return { isVoted: true, points: (data.points += 1) }
 }
 
-export function* updateVote({ payload }) {
+export function updateVote({ payload }) {
     if ('localStorage' in window) {
         localStorage.setItem(payload.id, true)
     }
-    let stories = yield select(getStories)
-    yield call(updateVoteStoryList, payload.id, stories)
-    yield put(actions.setUpdatedStoryList(stories))
 }

@@ -1,4 +1,3 @@
-import React from 'react'
 import VoteCount from './VoteCount'
 import UpVote from './UpVote'
 import NewsDetails from './NewsDetails'
@@ -13,18 +12,18 @@ export const header = [
         className: '',
         value: 'Vote Count',
         key: 'points',
-        renderTd: VoteCount,
+        RenderTd: VoteCount,
     },
     {
         className: '',
         value: 'UpVote',
         key: 'up_vote',
-        renderTd: (data) => <UpVote data={{ ...data }} />,
+        RenderTd: UpVote,
     },
     {
         className: '',
         value: 'News Details',
         key: 'news_details',
-        renderTd: (data) => <NewsDetails data={data} />,
+        RenderTd: NewsDetails,
     },
 ]

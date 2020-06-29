@@ -2,11 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './Table.scss'
 
-const Table = ({ header, rows }) => {
+const Table = ({ header, rows = [] }) => {
     const getValues = (tr, td) => {
         const trValue = tr[td.key]
-        if (td.renderTd) {
-            return td.renderTd(tr)
+        const RenderTd = td.RenderTd
+        if (RenderTd) {
+            return <RenderTd data={tr} />
         }
         return `${trValue}`
     }
@@ -22,7 +23,7 @@ const Table = ({ header, rows }) => {
             <tbody>
                 {!rows.length && (
                     <tr>
-                        <td colspan={header.length}>No data available!</td>{' '}
+                        <td colSpan={header.length}>No data available!</td>{' '}
                     </tr>
                 )}
                 {rows.map((tr) => {

@@ -2,6 +2,7 @@ import axios from 'axios'
 import { put, call } from 'redux-saga/effects'
 import actions from '../combine-actions'
 import { GQL_API_DOMAIN } from '../../constants'
+import { normalizeStory } from '../reducers/storyReducer'
 export function fetchStoryList(payload) {
     const { hitsPerPage, pageNo } = payload
     var query = `query hackerNews ($pageNo: Int, $hitsPerPage: Int){
@@ -34,12 +35,12 @@ export function fetchStoryList(payload) {
 export function* getStoriesFromApi(action) {
     try {
         const data = yield call(fetchStoryList, action.payload)
-        yield put(actions.setHackerNews(data))
+        yield put(actions.setHackerNews(normalizeStory(data.getStories)))
     } catch (error) {
         yield put(
             actions.setError({
                 isError: true,
-                msg: error.msg,
+                msg: error,
             })
         )
     }

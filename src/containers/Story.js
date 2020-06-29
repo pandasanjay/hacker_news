@@ -1,16 +1,20 @@
 import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import PropsType from 'prop-types'
+import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { fetchStoryList } from '../store/sagas/getStorySaga'
 import actions from '../store/combine-actions'
 import Table from '../components/Table/Table'
 import { header } from './NewsDetailsTable/TableHeaderDetails'
+import NavigationButton from '../components/NavigationButton'
+import Separator from '../components/Separator'
 import LineChart from './LineChart'
-import { chartSelector } from '../store/selector'
+import { normalizeStory } from '../store/reducers/storyReducer'
+import { chartSelector, getStoriesByArraySelector } from '../store/selector'
 const mapStateToProps = (state) => ({
-    state,
+    stories: getStoriesByArraySelector(state),
+    page: state.story && state.story.page,
+    nbPages: state.story && state.story.nbPages,
     chartDetails: chartSelector(state),
 })
 
@@ -23,48 +27,47 @@ const Story = (props) => {
         match: {
             params: { id = 0 },
         },
-        state: {
-            appState: { stories },
-        },
+        stories,
+        page,
+        nbPages,
         chartDetails: { labels, data },
     } = props
-    const { hits = [], page, nbPages } = stories
+
     useEffect(() => {
-        if ((!hits.length && nbPages > Number(id)) || page != id) {
+        //This check is here to prevent from loading twice
+        if ((!stories.length && nbPages > Number(id)) || page != id) {
             props.getHackerNews({ pageNo: id })
         }
-    }, [hits, id, page])
+    }, [stories, id, page])
 
     return (
         <>
-            <Table header={header} rows={hits} />
-            <div className="hn_page_navigation">
-                {page ? (
-                    <>
-                        <Link to={`/${page - 1}`}>Previous</Link>
-                    </>
-                ) : null}
-                {` | `}
-                {nbPages - 1 > page ? (
-                    <Link to={`/${page + 1}`}>Next</Link>
-                ) : null}
+            <div>
+                <Table header={header} rows={stories} />
+                <NavigationButton page={page} nbPages={nbPages} />
             </div>
-            <hr className="hn_separator"/>
+            <Separator />
             <LineChart labels={labels} data={data} />
-            <hr className="hn_separator"/>
+            <Separator />
         </>
     )
 }
 
 Story.propTypes = {
-    getHackerNews: PropsType.func,
-    setAppState: PropsType.func,
-    state: PropsType.object,
-    match: PropsType.object,
+    chartDetails: PropTypes.object,
+    getHackerNews: PropTypes.func,
+    setAppState: PropTypes.func,
+    stories: PropTypes.array,
+    match: PropTypes.object,
+    page: PropTypes.number,
+    nbPages: PropTypes.number,
 }
+//loadData function is for loading data from ssr
 export const loadData = async function (store, { params: { id } }) {
     const data = await fetchStoryList({ pageNo: id })
-    return store.dispatch(actions.setHackerNews(data))
+    return store.dispatch(
+        actions.setHackerNews(normalizeStory(data.getStories))
+    )
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Story)
