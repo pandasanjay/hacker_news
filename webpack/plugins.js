@@ -16,7 +16,10 @@ const htmlFilePlugin = new HtmlWebpackPlugin({
 const miniCssPlugin = new MiniCssExtractPlugin({
     filename: '[name].css',
 })
-
+new webpack.DefinePlugin({
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+    'process.env.GQL_API_DOMAIN': JSON.stringify(process.env.GQL_API_DOMAIN),
+})
 const loadablePlugin = new LoadablePlugin()
 const injectManifest = new InjectManifest({
     swSrc: path.join(process.cwd(), 'src/sw.js'),
