@@ -1,6 +1,9 @@
+const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const LoadablePlugin = require('@loadable/webpack-plugin')
+const { InjectManifest } = require('workbox-webpack-plugin')
+var WebpackPwaManifest = require('webpack-pwa-manifest')
 const htmlFilePlugin = new HtmlWebpackPlugin({
     title: 'Hacker News',
     template: './src/public/index.ejs',
@@ -15,4 +18,35 @@ const miniCssPlugin = new MiniCssExtractPlugin({
 })
 
 const loadablePlugin = new LoadablePlugin()
-module.exports = [miniCssPlugin, htmlFilePlugin, loadablePlugin]
+const injectManifest = new InjectManifest({
+    swSrc: path.join(process.cwd(), 'src/sw.js'),
+})
+
+const maniFestPlugin = new WebpackPwaManifest({
+    name: 'Hacker News',
+    short_name: 'HackerNews',
+    description:
+        'Hacker News is a community started by Paul Graham for sharing "Anything that good hackers would find interesting. ',
+    background_color: '#ffffff',
+    crossorigin: null,
+    theme_color: '#c64f00',
+    icons: [
+        {
+            src: path.resolve('src/public/icon.png'),
+            sizes: [96, 128, 192, 256, 384, 512, 1024],
+        },
+        {
+            src: path.resolve('src/public/icon.png'),
+            size: '1024x1024',
+            purpose: 'maskable',
+        },
+    ],
+})
+
+module.exports = [
+    miniCssPlugin,
+    htmlFilePlugin,
+    loadablePlugin,
+    injectManifest,
+    maniFestPlugin,
+]
