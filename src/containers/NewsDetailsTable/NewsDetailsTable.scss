@@ -1,0 +1,42 @@
+@import '../../styles/var.scss';
+.hn_vote_above_50 {
+    color: $vote-version-50;
+}
+.hn_vote_above_80 {
+    color: $vote-version-80;
+}
+.hn_vote_above_100 {
+    color: $vote-version-100;
+}
+
+.hn_details {
+    color: $black-color;
+    text-align: left;
+    .hn_title {
+        font-weight: 500;
+        font-size: 11pt;
+    }
+    .hn_url {
+        color: $secondary-5;
+        a {
+            color: $secondary-4;
+            text-decoration: none;
+        }
+    }
+    .hn_author {
+        color: $secondary-4;
+        b {
+            color: $black-color;
+        }
+    }
+    .hn_time {
+        color: $secondary-4;
+    }
+    .hn_hide {
+        color: $black-color;
+        cursor: pointer;
+        a {
+            font-weight: 500;
+        }
+    }
+}

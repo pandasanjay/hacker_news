@@ -5,6 +5,7 @@ const merge = require('webpack-merge')
 const path = require('path')
 const rules = require('./webpack/rules')
 const production = process.env.NODE_ENV === 'production'
+console.log(mode)
 const baseConfig = {
     mode,
     optimization: {

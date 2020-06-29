@@ -1,0 +1,48 @@
+@import '../../styles/var.scss';
+table {
+    font-family: Verdana, Geneva, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    color: $black-color;
+}
+td,
+th {
+    border: 0px;
+    text-align: center;
+    padding: 8px;
+    .nb_display_mobile {
+        display: none;
+    }
+    @media (min-width: 320px) and (max-width: 480px) {
+        display: none;
+        &:nth-child(4),
+        &:nth-child(3) {
+            display: table-cell;
+        }
+        .nb_display_mobile {
+            display: block;
+        }
+    }
+}
+th {
+    background-color: $primary;
+    color: $white-color;
+    text-align: left;
+}
+tr {
+    .votearrow {
+        width: 10px;
+        height: 10px;
+        border: 0px;
+        margin: 3px 2px 6px;
+        background-size: 10px;
+        background-image: url('../../public/grayarrow2x.gif');
+        cursor: pointer;
+    }
+    &:nth-child(even) {
+        background-color: #b2b3ac;
+    }
+    &:nth-child(odd) {
+        background-color: #bfbfba;
+    }
+}

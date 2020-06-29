@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux'
 
-import { reducer as appState } from './reducers/appReducer'
+import { reducer as app } from './reducers/appReducer'
+import { reducer as story } from './reducers/storyReducer'
 
 export default combineReducers({
-    appState,
+    app,
+    story,
 })

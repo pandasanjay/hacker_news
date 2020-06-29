@@ -1,6 +1,37 @@
-@import "./var.scss";
+@import './var.scss';
+
 body {
-  font-family: Verdana, Geneva, sans-serif;
-  font-size: 10pt;
-  color: $color;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 10pt;
+
+    .container {
+        max-width: 1264px;
+        width: 100%;
+        background: $secondary-1;
+        margin: 0 auto;
+        padding: 20px;
+        /* 
+            ##Device = Most of the Smartphones Mobiles (Portrait)
+            ##Screen = B/w 320px to 479px
+        */
+
+        @media (min-width: 320px) and (max-width: 480px) {
+            padding: 0px;
+        }
+    }
+    .hn_page_navigation {
+        text-align: end;
+        color: $primary;
+        font-weight: 700;
+        padding: 10px;
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+    }
+    .hn_separator {
+        border: 2px solid $primary;
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
 }
