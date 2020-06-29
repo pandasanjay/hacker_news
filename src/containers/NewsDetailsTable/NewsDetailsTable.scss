@@ -1,0 +1,41 @@
+.hn_vote_above_50 {
+    color: #482d39;
+}
+.hn_vote_above_80 {
+    color: #893b06;
+}
+.hn_vote_above_100 {
+    color: #c6520c;
+}
+
+.hn_details {
+    color: #000000;
+    text-align: left;
+    .hn_title {
+        font-weight: 500;
+        font-size: 11pt;
+    }
+    .hn_url {
+        color: #a5adae;
+        a {
+            color: #636666;
+            text-decoration: none;
+        }
+    }
+    .hn_author {
+        color: #636666;
+        b {
+            color: #000000;
+        }
+    }
+    .hn_time {
+        color: #636666;
+    }
+    .hn_hide {
+        color: #000000;
+        cursor: pointer;
+        a {
+            font-weight: 500;
+        }
+    }
+}

@@ -28,7 +28,10 @@ const cssLoader = {
         },
     ],
 }
-
+const fileLoader = {
+    test: /\.(png|svg|jpg|gif)$/,
+    use: ['file-loader'],
+}
 const cssLoaderIgnore = {
     test: /\.s[ac]ss$/i,
     loader: 'ignore-loader',
@@ -36,7 +39,7 @@ const cssLoaderIgnore = {
 
 module.exports = (configType = 'client') => {
     if (configType === 'client') {
-        return [babelLoader, cssLoader]
+        return [babelLoader, cssLoader, fileLoader]
     } else {
         return [babelLoader, cssLoaderIgnore]
     }

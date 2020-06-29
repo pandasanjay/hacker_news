@@ -15,7 +15,7 @@ export default [
             {
                 component: Story,
                 loadData,
-                path: '/',
+                path: '/:id?',
                 exact: true,
             },
             {

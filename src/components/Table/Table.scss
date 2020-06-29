@@ -1,0 +1,45 @@
+table {
+    font-family: Verdana, Geneva, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    color: #000;
+}
+td,
+th {
+    border: 0px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+    .nb_display_mobile {
+        display: none;
+    }
+    @media (min-width: 320px) and (max-width: 480px) {
+        display: none;
+        &:nth-child(4),
+        &:nth-child(3) {
+            display: table-cell;
+        }
+        .nb_display_mobile {
+            display: block;
+        }
+    }
+}
+th {
+    background-color: #c64e03;
+}
+tr {
+    .votearrow {
+        width: 10px;
+        height: 10px;
+        border: 0px;
+        margin: 3px 2px 6px;
+        background-size: 10px;
+        background-image: url('../../public/grayarrow2x.gif');
+        cursor: pointer;
+    }
+    &:nth-child(even) {
+        background-color: #b2b3ac;
+    }
+    &:nth-child(odd) {
+        background-color: #bfbfba;
+    }
+}

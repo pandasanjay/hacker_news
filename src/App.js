@@ -7,7 +7,7 @@ import ErrorBoundary from './components/ErrorBoundary'
 const App = ({ route }) => {
     return (
         <>
-            <div>
+            <div className="container">
                 <ErrorBoundary>{renderRoutes(route.routes)}</ErrorBoundary>
             </div>
         </>
