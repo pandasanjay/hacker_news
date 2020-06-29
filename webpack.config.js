@@ -1,10 +1,11 @@
-const mode = process.env.NODE_ENV || 'development'
-const plugins = require('./webpack/plugins')
 const nodeExternals = require('webpack-node-externals')
 const merge = require('webpack-merge')
 const path = require('path')
+const TerserPlugin = require('terser-webpack-plugin')
+const plugins = require('./webpack/plugins')
 const rules = require('./webpack/rules')
 const production = process.env.NODE_ENV === 'production'
+const mode = process.env.NODE_ENV || 'development'
 const baseConfig = {
     mode,
     optimization: {
@@ -12,6 +13,12 @@ const baseConfig = {
             // include all types of chunks
             chunks: 'all',
         },
+        minimize: production,
+        minimizer: [
+            new TerserPlugin({
+                parallel: true,
+            }),
+        ],
     },
 }
 const client = merge(baseConfig, {
@@ -29,7 +36,7 @@ const client = merge(baseConfig, {
         compress: true,
         port: 3000,
     },
-    devtool: 'inline-source-map',
+    devtool: !production && 'inline-source-map',
 })
 
 const server = merge(baseConfig, {
