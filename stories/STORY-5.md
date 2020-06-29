@@ -1,7 +1,8 @@
 # Add CI/CD pipeline
 
-> In refinement
+> **Story Point**: 5 | **Time spent**: 2hr | **Status**: Completed
 
-Setup a pipeline using XYZ tool and deploy it to any Cloud/Server.
+Setup a pipeline using GIT Action tool and deploy it to any heroku.
 
-**WIP** We will finalize the tools and service provider to deploy the code.
+-   AC1: GIT Action setup
+-   AC2: Deploy it to any heroku

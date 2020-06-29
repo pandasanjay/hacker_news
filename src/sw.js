@@ -1,6 +1,8 @@
+/* eslint-disable  no-undef */
 importScripts(
     'https://storage.googleapis.com/workbox-cdn/releases/5.0.0/workbox-sw.js'
 )
+/* eslint-disable  no-undef */
 workbox.core.skipWaiting()
 workbox.core.clientsClaim()
 const CACHE_NAME = 'hacker_news_v1'
