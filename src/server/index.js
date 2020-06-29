@@ -7,12 +7,15 @@ import createStore from '../store/store'
 import renderer from './renderer'
 import Routes from '../Routes'
 import compression from 'compression'
+import secure from 'ssl-express-www'
 
 const log = debug('HN:server:index')
 /* eslint-disable  no-undef */
 const PORT = process.env.PORT || 3000
 
 const app = express()
+
+app.use(secure)
 app.use(compression())
 app.use(
     '/graphql',
