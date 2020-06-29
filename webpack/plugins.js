@@ -43,17 +43,15 @@ const maniFestPlugin = new WebpackPwaManifest({
         },
     ],
 })
-
+const definePlugin = new webpack.DefinePlugin({
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+    'process.env.GQL_API_DOMAIN': JSON.stringify(process.env.GQL_API_DOMAIN),
+})
 module.exports = [
+    definePlugin,
     miniCssPlugin,
     htmlFilePlugin,
     loadablePlugin,
     injectManifest,
     maniFestPlugin,
-    new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-        'process.env.GQL_API_DOMAIN': JSON.stringify(
-            process.env.GQL_API_DOMAIN
-        ),
-    }),
 ]

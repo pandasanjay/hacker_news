@@ -5,7 +5,6 @@ const merge = require('webpack-merge')
 const path = require('path')
 const rules = require('./webpack/rules')
 const production = process.env.NODE_ENV === 'production'
-console.log(mode)
 const baseConfig = {
     mode,
     optimization: {
@@ -36,7 +35,7 @@ const client = merge(baseConfig, {
 const server = merge(baseConfig, {
     entry: './src/server/index.js',
     target: 'node',
-
+    plugins: [plugins[0]],
     externals: [nodeExternals()],
     output: {
         path: path.resolve(__dirname, 'dist'),
