@@ -7,7 +7,6 @@ export function updateVoteByFromLocalStorage(state) {
                 voteCount = localStorage.getItem(id)
             }
             //For backward compatible need to remove after some release
-            console.log(typeof voteCount === 'boolean')
             if (voteCount === 'true') {
                 voteCount = 1
             }
