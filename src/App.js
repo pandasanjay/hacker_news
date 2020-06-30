@@ -6,11 +6,11 @@ import ErrorBoundary from './components/ErrorBoundary'
 
 const App = ({ route }) => {
     return (
-        <>
+        <main>
             <div className="container">
                 <ErrorBoundary>{renderRoutes(route.routes)}</ErrorBoundary>
             </div>
-        </>
+        </main>
     )
 }
 App.propTypes = {

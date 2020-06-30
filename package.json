@@ -12,6 +12,7 @@
         "heroku-postbuild": "npm run build:prod",
         "heroku-prebuild": "rm -rf dist",
         "build:prod": "env-cmd webpack",
+        "build:prod:docker": "env-cmd -f docker.env webpack",
         "dev": "rm -rf dist && webpack && npm-run-all --parallel dev:*",
         "dev:build": "webpack --watch",
         "dev:server": "nodemon --watch dist --exec \"node dist/index.js\"",

@@ -11,6 +11,7 @@ const Table = ({ header, rows = [] }) => {
         }
         return `${trValue}`
     }
+
     return (
         <table>
             <thead>
