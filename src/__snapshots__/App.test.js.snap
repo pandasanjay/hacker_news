@@ -2,12 +2,14 @@
 
 exports[`App should render app and check snapshot 1`] = `
 <DocumentFragment>
-  <div
-    class="container"
-  >
-    <div>
-      Loading...
+  <main>
+    <div
+      class="container"
+    >
+      <div>
+        Loading...
+      </div>
     </div>
-  </div>
+  </main>
 </DocumentFragment>
 `;

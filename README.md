@@ -2,6 +2,8 @@
 
 -   Table of content
     -   [Run Application:](#run-application-)
+        -   [local](#local)
+        -   [Using docker](#using-docker)
     -   [Contribution Guide](#contribution-guide)
         -   [Unit test](#unit-test)
         -   [Linting](#linting)
@@ -11,6 +13,8 @@
 ## Run Application:
 
 This application use Webpack
+
+### local
 
 ```bash
 // Install
@@ -27,6 +31,23 @@ This application use Webpack
 ```
 
 Open in browser: http://localhost:3000
+
+### Using docker
+
+**Prod:** Dockerfile | env file: docker.env
+**Dev:** Dockerfile.dev
+
+```bash
+// For local development using `Dockerfile.dev`. Run in http://localhost:3002
+> docker-compose up
+
+// For publish to registry and prod build using `Dockerfile`
+> docker build . -t hacker_news
+
+// To run image `hacker_news` as container and background
+> docker run -p 3001:3000 -d hacker_news
+
+```
 
 ## Contribution Guide
 
@@ -61,12 +82,14 @@ Open in browser: http://localhost:3000
     -   Client and Server config
 -   Code split suing @component/loader
 -   SCSS
+-   Semantic Elements in HTML
 -   Chart.js for chart
 -   local storage for storing the UpVote and hide
 -   Axios both client and server
 -   Service worker and manifest for PWA
 -   GITAction for CI
 -   Heroku for automated deploy when merge to master.
+-   Dockerfile and docker-compose.yml
 
 ## Application requirement gathering process
 

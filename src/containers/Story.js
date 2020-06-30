@@ -42,7 +42,7 @@ const Story = (props) => {
 
     return (
         <>
-            <div>
+            <div role="heading" aria-level="1">
                 <Table header={header} rows={stories} />
                 <NavigationButton page={page} nbPages={nbPages} />
             </div>

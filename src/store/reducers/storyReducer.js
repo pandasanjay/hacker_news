@@ -25,12 +25,10 @@ const updateVoteCountInStory = (state, id) => {
         ...state,
         byIds: {
             ...state.byIds,
-            [id]: story.isVoted
-                ? { ...story }
-                : {
-                      ...story,
-                      ...{ isVoted: true, points: (story.points += 1) },
-                  },
+            [id]: {
+                ...story,
+                ...{ isVoted: true, points: (story.points += 1) },
+            },
         },
     }
 }
