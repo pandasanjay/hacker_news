@@ -27,7 +27,7 @@ export function updateVote({ payload }) {
     if ('localStorage' in window) {
         let pointForTheStory = localStorage.getItem(payload.id) || 0
 
-        if (pointForTheStory) {
+        if (pointForTheStory !== undefined) {
             //For backward compatible need to remove after some release
             if (pointForTheStory === 'true') {
                 pointForTheStory = 1
