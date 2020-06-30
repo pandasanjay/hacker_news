@@ -89,6 +89,7 @@ Open in browser: http://localhost:3000
 -   Service worker and manifest for PWA
 -   GITAction for CI
 -   Heroku for automated deploy when merge to master.
+-   Dockerfile and docker-compose.yml
 
 ## Application requirement gathering process
 
