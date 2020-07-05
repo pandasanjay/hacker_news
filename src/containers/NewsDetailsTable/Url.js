@@ -1,4 +1,6 @@
 import React, { useMemo, memo } from 'react'
+import PropTypes from 'prop-types'
+
 import { getHostName } from '../../helpers/helpers'
 const Url = ({ url }) => {
     const hostName = useMemo(() => getHostName(url), [url])
@@ -15,5 +17,8 @@ const Url = ({ url }) => {
             )}
         </span>
     )
+}
+Url.propTypes = {
+    url: PropTypes.string,
 }
 export default memo(Url)

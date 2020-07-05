@@ -1,5 +1,7 @@
 import React, { memo } from 'react'
+import PropTypes from 'prop-types'
 import Columns from './Columns'
+
 const Rows = ({ rows, header }) => {
     return (
         <>
@@ -16,5 +18,8 @@ const Rows = ({ rows, header }) => {
         </>
     )
 }
-
+Rows.propTypes = {
+    rows: PropTypes.array,
+    header: PropTypes.array,
+}
 export default memo(Rows)

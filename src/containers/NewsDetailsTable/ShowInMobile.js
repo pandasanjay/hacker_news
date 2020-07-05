@@ -1,4 +1,5 @@
-import React from "react"
+import React from 'react'
+import PropTypes from 'prop-types'
 
 const ShowInMobile = ({ num_comments, points }) => {
     return (
@@ -13,5 +14,8 @@ const ShowInMobile = ({ num_comments, points }) => {
         </div>
     )
 }
-
+ShowInMobile.propTypes = {
+    num_comments: PropTypes.number,
+    points: PropTypes.number,
+}
 export default ShowInMobile

@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-
+import PropTypes from 'prop-types'
 const Columns = ({ tr, header }) => {
     const getValues = (tr, td) => {
         const trValue = tr[td.key]
@@ -19,5 +19,8 @@ const Columns = ({ tr, header }) => {
         </>
     )
 }
-
+Columns.propTypes = {
+    tr: PropTypes.object,
+    header: PropTypes.array,
+}
 export default memo(Columns)

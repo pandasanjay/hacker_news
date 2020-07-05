@@ -1,6 +1,5 @@
-import React, { memo, useMemo } from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
-
 import Title from './Title'
 import Url from './Url'
 import Author from './Author'

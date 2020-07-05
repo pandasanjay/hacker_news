@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { bindActionCreators } from 'redux'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchStoryList } from '../store/sagas/getStorySaga'
 import actions from '../store/combine-actions'
