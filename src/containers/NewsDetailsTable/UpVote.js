@@ -1,15 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import actions from '../../store/combine-actions'
 
-const mapDispatchToProps = (dispatch) => ({
-    ...bindActionCreators(actions, dispatch),
-})
-const UpVote = ({ data, setVote }) => {
+const UpVote = ({ data }) => {
+    const dispatch = useDispatch()
     const handelClick = (id) => {
-        setVote({ id })
+        dispatch(actions.setVote({ id }))
     }
     return (
         <center>
@@ -25,7 +22,6 @@ const UpVote = ({ data, setVote }) => {
 }
 UpVote.propTypes = {
     data: PropTypes.object,
-    setVote: PropTypes.func,
 }
 
-export default connect(null, mapDispatchToProps)(UpVote)
+export default UpVote

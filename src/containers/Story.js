@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchStoryList } from '../store/sagas/getStorySaga'
@@ -17,10 +17,10 @@ const Story = (props) => {
             params: { id = 0 },
         },
     } = props
-    const stories = useSelector(getStoriesByArraySelector)
+    const stories = useSelector(useMemo(() => getStoriesByArraySelector, []))
     const page = useSelector((state) => state.story && state.story.page)
     const nbPages = useSelector((state) => state.story && state.story.nbPages)
-    const { labels, data } = useSelector(chartSelector)
+    const { labels, data } = useSelector(useMemo(() => chartSelector, []))
     const dispatch = useDispatch()
     useEffect(() => {
         //This check is here to prevent from loading twice

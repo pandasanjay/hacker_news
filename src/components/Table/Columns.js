@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo, useMemo } from 'react'
 import PropTypes from 'prop-types'
 const Columns = ({ tr, header }) => {
     const getValues = (tr, td) => {
@@ -9,11 +9,12 @@ const Columns = ({ tr, header }) => {
         }
         return `${trValue}`
     }
+
     return (
         <>
             {header.map((td) => (
                 <td key={`${td.key}_${tr.objectID}_${tr.points}`}>
-                    {getValues(tr, td)}
+                    {useMemo(() => getValues(tr, td), [tr, td])}
                 </td>
             ))}
         </>
