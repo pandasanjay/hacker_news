@@ -1,17 +1,9 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
+import Rows from './Rows'
 import './Table.scss'
 
 const Table = ({ header, rows = [] }) => {
-    const getValues = (tr, td) => {
-        const trValue = tr[td.key]
-        const RenderTd = td.RenderTd
-        if (RenderTd) {
-            return <RenderTd data={tr} />
-        }
-        return `${trValue}`
-    }
-
     return (
         <table>
             <thead>
@@ -27,21 +19,7 @@ const Table = ({ header, rows = [] }) => {
                         <td colSpan={header.length}>No data available!</td>{' '}
                     </tr>
                 )}
-                {rows.map((tr) => {
-                    return (
-                        !tr.isHidden && (
-                            <tr key={tr.objectID}>
-                                {header.map((td) => (
-                                    <td
-                                        key={`${td.key}_${tr.objectID}_${tr.points}`}
-                                    >
-                                        {getValues(tr, td)}
-                                    </td>
-                                ))}
-                            </tr>
-                        )
-                    )
-                })}
+                <Rows header={header} rows={rows} />
             </tbody>
         </table>
     )

@@ -21,6 +21,7 @@ export function fetchStoryList(payload) {
           hitsPerPage
         }
       }`
+
     return axios
         .post(`${GQL_API_DOMAIN}/graphql`, {
             query,

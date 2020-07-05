@@ -15,7 +15,7 @@
         "build:prod:docker": "env-cmd -f docker.env webpack",
         "dev": "rm -rf dist && webpack && npm-run-all --parallel dev:*",
         "dev:build": "webpack --watch",
-        "dev:server": "nodemon --watch dist --exec \"node dist/index.js\"",
+        "dev:server": "env-cmd -f dev.env nodemon --watch dist --exec \"node dist/index.js\"",
         "test": "jest --config jest.config.js --silent",
         "lint": "eslint ./src",
         "lint:fix": "npm run lint --fix"

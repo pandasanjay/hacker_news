@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 const VoteCount = ({ data }) => {
     let colorClass = ''
@@ -17,4 +17,4 @@ VoteCount.propTypes = {
     data: PropTypes.object,
 }
 
-export default VoteCount
+export default memo(VoteCount)

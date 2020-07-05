@@ -1,54 +1,27 @@
-import React from 'react'
+import React, { memo, useMemo } from 'react'
 import PropTypes from 'prop-types'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import actions from '../../store/combine-actions'
-import { getHostName, getRelativeTime } from '../../helpers/helpers'
-const mapDispatchToProps = (dispatch) => ({
-    ...bindActionCreators(actions, dispatch),
-})
-const NewsDetails = ({ data, hideStory }) => {
-    const handelHideClick = (id) => {
-        hideStory({ id })
-    }
+
+import Title from './Title'
+import Url from './Url'
+import Author from './Author'
+import Time from './Time'
+import HideLink from './HideLink'
+import ShowInMobile from './ShowInMobile'
+const NewsDetails = ({ data }) => {
     return (
         <div className="hn_details">
-            <span className="hn_title">{`${data.title}`}</span>
-            <span className="hn_url">
-                {data.url && (
-                    <>
-                        {` (`}
-                        <a href={data.url}>
-                            <b>{`${getHostName(data.url)}`}</b>
-                        </a>
-                        {`)`}
-                    </>
-                )}
-            </span>{' '}
-            <span className="hn_author">
-                {`by`} <b>{data.author}</b>
-            </span>{' '}
-            <span className="hn_time">{`${getRelativeTime(
-                data.created_at
-            )}`}</span>{' '}
-            <span className="hn_hide">
-                {`[`} <a onClick={() => handelHideClick(data.objectID)}>hide</a>{' '}
-                {`]`}
-            </span>
-            <div className="nb_display_mobile">
-                <span>
-                    <b>Comments:</b> {data.num_comments}
-                </span>
-                {` | `}
-                <span>
-                    <b>Votes:</b> {data.points}
-                </span>
-            </div>
+            <Title title={data.title} /> <Url url={data.url} />{' '}
+            <Author author={data.author} />{' '}
+            <Time created_at={data.created_at} />{' '}
+            <HideLink id={data.objectID} />{' '}
+            <ShowInMobile
+                num_comments={data.num_comments}
+                points={data.points}
+            />
         </div>
     )
 }
 NewsDetails.propTypes = {
     data: PropTypes.object,
-    hideStory: PropTypes.func,
 }
-export default connect(null, mapDispatchToProps)(NewsDetails)
+export default memo(NewsDetails)

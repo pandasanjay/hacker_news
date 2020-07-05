@@ -29,6 +29,11 @@ const LineChart = ({ labels, data }) => {
         ],
     }
     const options = {
+        elements: {
+            line: {
+                tension: 0,
+            },
+        },
         maintainAspectRatio: false,
         legend: {
             display: false,
