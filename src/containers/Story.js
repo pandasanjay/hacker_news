@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import PropTypes from 'prop-types'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { fetchStoryList } from '../store/sagas/getStorySaga'
 import actions from '../store/combine-actions'
 import Table from '../components/Table/Table'
@@ -11,32 +10,22 @@ import Separator from '../components/Separator'
 import LineChart from './LineChart'
 import { normalizeStory } from '../store/reducers/storyReducer'
 import { chartSelector, getStoriesByArraySelector } from '../store/selector'
-const mapStateToProps = (state) => ({
-    stories: getStoriesByArraySelector(state),
-    page: state.story && state.story.page,
-    nbPages: state.story && state.story.nbPages,
-    chartDetails: chartSelector(state),
-})
-
-const mapDispatchToProps = (dispatch) => ({
-    ...bindActionCreators(actions, dispatch),
-})
 
 const Story = (props) => {
     const {
         match: {
             params: { id = 0 },
         },
-        stories,
-        page,
-        nbPages,
-        chartDetails: { labels, data },
     } = props
-
+    const stories = useSelector(useMemo(() => getStoriesByArraySelector, []))
+    const page = useSelector((state) => state.story && state.story.page)
+    const nbPages = useSelector((state) => state.story && state.story.nbPages)
+    const { labels, data } = useSelector(useMemo(() => chartSelector, []))
+    const dispatch = useDispatch()
     useEffect(() => {
         //This check is here to prevent from loading twice
         if ((!stories.length && nbPages > Number(id)) || page != id) {
-            props.getHackerNews({ pageNo: id })
+            dispatch(actions.getHackerNews({ pageNo: id }))
         }
     }, [stories, id, page])
 
@@ -54,13 +43,7 @@ const Story = (props) => {
 }
 
 Story.propTypes = {
-    chartDetails: PropTypes.object,
-    getHackerNews: PropTypes.func,
-    setAppState: PropTypes.func,
-    stories: PropTypes.array,
     match: PropTypes.object,
-    page: PropTypes.number,
-    nbPages: PropTypes.number,
 }
 //loadData function is for loading data from ssr
 export const loadData = async function (store, { params: { id } }) {
@@ -70,4 +53,4 @@ export const loadData = async function (store, { params: { id } }) {
     )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Story)
+export default Story

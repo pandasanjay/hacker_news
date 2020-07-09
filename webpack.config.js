@@ -42,7 +42,6 @@ const client = merge(baseConfig, {
 const server = merge(baseConfig, {
     entry: './src/server/index.js',
     target: 'node',
-    plugins: [plugins[0]],
     externals: [nodeExternals()],
     output: {
         path: path.resolve(__dirname, 'dist'),

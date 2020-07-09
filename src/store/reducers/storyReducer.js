@@ -1,5 +1,7 @@
+import { getRelativeTime } from '../../helpers/helpers'
 export const normalizeStory = ({ hits = [], ...others }) => {
     const byIds = hits.reduce((init, story) => {
+        story.created_at = getRelativeTime(story.created_at)
         init[story.objectID] = story
         return init
     }, {})

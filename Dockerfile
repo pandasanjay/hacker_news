@@ -1,5 +1,8 @@
 FROM node:12
 
+ARG api_domain_path=http://localhost:3000
+ENV GQL_API_DOMAIN=${api_domain_path}
+
 WORKDIR /app
 ADD . /app
 
