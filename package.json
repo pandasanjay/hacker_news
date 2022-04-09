@@ -33,7 +33,7 @@
         "express": "^4.17.1",
         "express-graphql": "^0.9.0",
         "graphql": "^15.1.0",
-        "moment": "^2.27.0",
+        "moment": "^2.29.2",
         "react": "^16.13.1",
         "react-chartjs-2": "^2.9.0",
         "react-dom": "^16.13.1",
